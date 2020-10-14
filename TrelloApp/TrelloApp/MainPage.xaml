@@ -19,6 +19,11 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+
+
+        <Button Text="Service1" Clicked="Button_Clicked"></Button>
+        <Button Text="Service2" Clicked="Button_Clicked_1"></Button>
+        <Button Text="Service2" Clicked="Button_Clicked_2"></Button>
     </StackLayout>
 
 </ContentPage>

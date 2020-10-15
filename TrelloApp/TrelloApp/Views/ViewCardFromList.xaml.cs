@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TrelloApp.ViewModels;
+using TrelloApp.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,18 @@ namespace TrelloApp.Views
         public ViewCardFromList()
         {
             InitializeComponent();
+            BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModelLocator.Instance.Resolve<TrelloViewModel>().CardsListCommand.Execute(null);
+        }
+
+        private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
         }
     }
 }

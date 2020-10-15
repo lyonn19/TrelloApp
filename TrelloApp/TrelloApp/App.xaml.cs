@@ -1,4 +1,5 @@
 ﻿using System;
+using TrelloApp.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace TrelloApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            // MainPage = new MainPage();
+            MainPage = new NavigationPage(new BoardList());
         }
 
         protected override void OnStart()

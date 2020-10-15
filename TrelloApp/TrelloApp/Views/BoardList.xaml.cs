@@ -34,5 +34,11 @@ namespace TrelloApp.Views
             ListViewBoardListMenu.SelectedItem = null;
             Navigation.PushAsync(new ViewCardFromList());
         }
+
+
+        private void NewMember_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

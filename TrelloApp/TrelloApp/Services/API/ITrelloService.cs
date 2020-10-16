@@ -12,7 +12,7 @@ namespace TrelloApp.Services.API
         Task<IEnumerable<Card>> GetCardsFromList(string cardListId);
         Task<Card> GetCard(string cardId);
         Task<bool> PostNewBoardMember(string boardId, string email);
-        Task<object> CreateCard(string cardIdList);
-        Task<object> AddAttachmentToCard(string cardId);
+        Task<bool> CreateCard(string cardListId, Card card);
+        Task<bool> AddAttachmentToCard(string cardId);
     }
 }

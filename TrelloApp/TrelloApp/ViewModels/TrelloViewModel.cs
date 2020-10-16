@@ -40,17 +40,6 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        //private Cards _selectedCardsList;
-        //public Cards SelectedCardsList
-        //{
-        //    get { return _selectedCardsList; }
-        //    set
-        //    {
-        //        _selectedCardsList = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
         private Card _selectedCard;
         public Card SelectedCard
         {
@@ -85,7 +74,7 @@ namespace TrelloApp.ViewModels
         }
 
         private string _cardName;
-        public string Cardname
+        public string CardName
         {
             get { return _cardName; }
             set
@@ -158,11 +147,15 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                await _trelloService.PostNewBoardMember(AppSettings.BoardId, NewMemeberEmail);
+                var result = await _trelloService.PostNewBoardMember(AppSettings.BoardId, NewMemeberEmail);
+                if(!result)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");
+                }
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrio un error interno en el servidor", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "An internal server error occurred", "Accept");
             }
         }
 
@@ -175,7 +168,7 @@ namespace TrelloApp.ViewModels
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrio un error interno en el servidor", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "An internal server error occurred", "Accept");
             }
         }
 
@@ -184,11 +177,15 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                await _trelloService.CreateCard(SelectedCard.Id);
+                var result = await _trelloService.CreateCard(SelectedBoardList.id, new Card() { Name = CardName, Desc = CardDescription });
+                if (!result)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");
+                }
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrio un error interno en el servidor", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "An internal server error occurred", "Accept");
             }
         }
 

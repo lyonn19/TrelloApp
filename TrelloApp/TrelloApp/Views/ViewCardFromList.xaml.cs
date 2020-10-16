@@ -34,5 +34,10 @@ namespace TrelloApp.Views
             ListViewCardList.SelectedItem = null;
             Navigation.PushAsync(new ViewCard());
         }
+
+        private void NewCard_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new CreateCard());
+        }
     }
 }

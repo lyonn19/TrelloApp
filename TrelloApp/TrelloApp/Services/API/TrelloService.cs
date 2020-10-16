@@ -125,25 +125,27 @@ namespace TrelloApp.Services.API
             return result;
         }
 
-        public async Task<object> CreateCard(string cardIdList)
+        public async Task<bool> CreateCard(string cardIdList, Card card)
         {
-            Object result = new object();
+            bool result = false;
             try
             {
                 var parameters = new Dictionary<string, string>
                 {
                     { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
                     { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" },
+                    { "name", card.Name },
+                    { "desc", card.Desc },
                     { "idList", cardIdList },
                 };
 
                 var remoteResponse = await PostAsync($"/1/cards", JsonConvert.SerializeObject(parameters));
                 var content = await remoteResponse.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<object>(content);
+                var response = JsonConvert.DeserializeObject<Card>(content);
 
                 if (response != null)
                 {
-                    result = response;
+                    result = true;
                 }
             }
             catch (Exception ex)
@@ -153,9 +155,9 @@ namespace TrelloApp.Services.API
             return result;
         }
 
-        public async Task<object> AddAttachmentToCard(string cardId)
+        public async Task<bool> AddAttachmentToCard(string cardId)
         {
-            Object result = new object();
+            bool result = false;
             try
             {
                 var parameters = new Dictionary<string, string>
@@ -170,7 +172,7 @@ namespace TrelloApp.Services.API
 
                 if (response != null)
                 {
-                    result = response;
+                    result = true;
                 }
             }
             catch (Exception ex)

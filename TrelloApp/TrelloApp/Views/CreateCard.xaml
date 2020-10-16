@@ -7,6 +7,13 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <Label Text="Name"/>
+            <Entry Text="{Binding CardName}"/>
+            <Label Text="Descripcion"/>
+            <Entry Text="{Binding CardDescription}"/>
+
+            <Button Text="Create" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using TrelloApp.ViewModels;
+using TrelloApp.ViewModels.Base;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +16,12 @@ namespace TrelloApp.Views
         public CreateCard()
         {
             InitializeComponent();
+            BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            ViewModelLocator.Instance.Resolve<TrelloViewModel>().CreateCardCommand.Execute(null);
         }
     }
 }

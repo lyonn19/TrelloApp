@@ -4,12 +4,8 @@ using System.Text;
 
 namespace TrelloApp.Models
 {
-
     public class Card
     {
-        public string id { get; set; }
-        public string desc { get; set; }
-        public string name { get; set; }
-
+        public string Id { get; set; }
     }
 }

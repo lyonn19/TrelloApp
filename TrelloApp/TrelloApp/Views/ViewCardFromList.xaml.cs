@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TrelloApp.Models;
 using TrelloApp.ViewModels;
 using TrelloApp.ViewModels.Base;
 using Xamarin.Forms;
@@ -27,7 +28,11 @@ namespace TrelloApp.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-
+            var card = ((ListView)sender).SelectedItem as Card;
+            if (card == null) return;
+            ViewModelLocator.Instance.Resolve<TrelloViewModel>().SelectedCard = card;
+            ListViewCardList.SelectedItem = null;
+            Navigation.PushAsync(new ViewCard());
         }
     }
 }

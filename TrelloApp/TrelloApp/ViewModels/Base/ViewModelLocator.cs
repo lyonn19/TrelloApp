@@ -22,7 +22,8 @@ namespace TrelloApp.ViewModels.Base
 
             // viewmodels
             _container.RegisterType<TrelloViewModel>(new ContainerControlledLifetimeManager());
-            _container.RegisterType<MenuBoardViewModel>(new ContainerControlledLifetimeManager());
+
+
 
             var unityServiceLocator = new UnityServiceLocator(_container);
             ServiceLocator.SetLocatorProvider(() => unityServiceLocator);

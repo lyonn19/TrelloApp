@@ -38,7 +38,7 @@ namespace TrelloApp.Views
 
         private void NewMember_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new BoardNewMember());
         }
     }
 }

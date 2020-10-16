@@ -5,7 +5,7 @@
              Title="Cards List">
     <ContentPage.Content>
         <StackLayout>
-            <ListView x:Name="ListViewBoardListMenu"
+            <ListView x:Name="ListViewCardList"
                 ItemsSource="{Binding CardsList}"
                 ItemSelected="ListView_OnItemSelected"
                 SeparatorVisibility="Default"

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace TrelloApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ViewCard : ContentView
+    public partial class ViewCard : ContentPage
     {
         public ViewCard()
         {

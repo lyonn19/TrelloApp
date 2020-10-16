@@ -21,8 +21,8 @@ namespace TrelloApp
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var trelloService = new TrelloService();
-            // await trelloService.GetBoardList(AppSettings.BoardId);
-            await trelloService.PostNewBoardMember(AppSettings.BoardId, "lyonn@gmail.com");
+            await trelloService.GetBoardList(AppSettings.BoardId);
+            //await trelloService.PostNewBoardMember(AppSettings.BoardId, "lyonn@gmail.com");
         }
 
         private async void Button_Clicked_1(object sender, EventArgs e)

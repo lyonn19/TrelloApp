@@ -17,8 +17,15 @@ namespace TrelloApp.Models
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
-        [JsonProperty(PropertyName = "attachments")]
-        public string Attachments { get; set; }
+        [JsonProperty(PropertyName = "badges")]
+        public Badges Badges { get; set; }
 
+    }
+
+
+    public class Badges
+    {
+        [JsonProperty(PropertyName = "attachments")]
+        public int Attachments { get; set; }
     }
 }

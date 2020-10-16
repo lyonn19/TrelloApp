@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace TrelloApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BoardList : ContentPage
+    public partial class ViewBoardList : ContentPage
     {
-        public BoardList()
+        public ViewBoardList()
         {
             InitializeComponent();
             BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();
@@ -38,7 +38,7 @@ namespace TrelloApp.Views
 
         private void NewMember_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new BoardNewMember());
+            Navigation.PushAsync(new ViewBoardNewMember());
         }
     }
 }

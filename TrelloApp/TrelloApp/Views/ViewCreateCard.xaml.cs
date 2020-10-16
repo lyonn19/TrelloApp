@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace TrelloApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CreateCard : ContentPage
+    public partial class ViewCreateCard : ContentPage
     {
-        public CreateCard()
+        public ViewCreateCard()
         {
             InitializeComponent();
             BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();

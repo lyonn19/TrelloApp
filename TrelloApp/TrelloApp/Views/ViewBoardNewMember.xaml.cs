@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace TrelloApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BoardNewMember : ContentPage
+    public partial class ViewBoardNewMember : ContentPage
     {
-        public BoardNewMember()
+        public ViewBoardNewMember()
         {
             InitializeComponent();
             BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();

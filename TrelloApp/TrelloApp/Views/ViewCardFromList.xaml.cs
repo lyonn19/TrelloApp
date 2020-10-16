@@ -37,7 +37,7 @@ namespace TrelloApp.Views
 
         private void NewCard_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new CreateCard());
+            Navigation.PushAsync(new ViewCreateCard());
         }
     }
 }

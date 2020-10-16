@@ -12,7 +12,7 @@ namespace TrelloApp
             InitializeComponent();
 
             //MainPage = new MainPage();
-            MainPage = new NavigationPage(new BoardList());
+            MainPage = new NavigationPage(new ViewBoardList());
         }
 
         protected override void OnStart()

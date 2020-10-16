@@ -95,6 +95,17 @@ namespace TrelloApp.ViewModels
             }
         }
 
+        private int _cardListCount;
+        public int CardListCount 
+        {
+            get { return _cardListCount; }
+            set
+            {
+                _cardListCount = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public ObservableCollection<Board> BoardList { get; set; }
         public ObservableCollection<Card> CardsList { get; set; }
@@ -126,7 +137,7 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                var boards = await _trelloService.GetCardsFromList(SelectedBoardList.id);
+                var boards = await _trelloService.GetCardsFromList(SelectedBoardList.Id);
 
                 if (boards.Any())
                 {
@@ -134,6 +145,7 @@ namespace TrelloApp.ViewModels
                     {
                         CardsList.Add(item);
                     }
+                    CardListCount = CardsList.Count;
                 }
             }
             catch (Exception ex)
@@ -177,7 +189,7 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                var result = await _trelloService.CreateCard(SelectedBoardList.id, new Card() { Name = CardName, Desc = CardDescription });
+                var result = await _trelloService.CreateCard(SelectedBoardList.Id, new Card() { Name = CardName, Desc = CardDescription });
                 if (!result)
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");

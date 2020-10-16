@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrelloApp.Views.BoardList"
+             x:Class="TrelloApp.Views.ViewBoardList"
              Title="Trello M-ProyectX Board">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Save" Text="New Member" Icon="ic_stat_add.png" Priority="0" Order="Primary" Clicked="NewMember_Clicked"/>
@@ -15,7 +15,7 @@
                 BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}" Detail="{Binding pos}"/>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Pos}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

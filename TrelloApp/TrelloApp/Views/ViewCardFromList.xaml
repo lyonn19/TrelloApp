@@ -18,6 +18,12 @@
                         <TextCell Text="{Binding Name}" Detail="{Binding Desc}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout>
+                        <Label Text="{Binding CardsList.Count, StringFormat='Cards: {0}'}" 
+                               HorizontalOptions="End" TextColor="Blue"/>
+                    </StackLayout>
+                </ListView.Footer>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

@@ -43,9 +43,9 @@ namespace TrelloApp.Services.API
             return result;
         }
 
-        public async Task<IEnumerable<Cards>> GetCardsFromList(string cardListId)
+        public async Task<IEnumerable<Card>> GetCardsFromList(string cardListId)
         {
-            IEnumerable<Cards> result = new List<Cards>();
+            IEnumerable<Card> result = new List<Card>();
             try
             {
                 var parameters = new Dictionary<string, string>
@@ -56,7 +56,7 @@ namespace TrelloApp.Services.API
 
                 var remoteResponse = await GetAsync($"/1/lists/{cardListId}/cards", parameters);
                 var content = await remoteResponse.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<IEnumerable<Cards>>(content);
+                var response = JsonConvert.DeserializeObject<IEnumerable<Card>>(content);
 
                 if (response != null)
                 {
@@ -70,9 +70,9 @@ namespace TrelloApp.Services.API
             return result;
         }
 
-        public async Task<Cards> GetCard(string cardId)
+        public async Task<Card> GetCard(string cardId)
         {
-            Cards result = new Cards();
+            Card result = new Card();
             try
             {
                 var parameters = new Dictionary<string, string>
@@ -83,7 +83,7 @@ namespace TrelloApp.Services.API
 
                 var remoteResponse = await GetAsync($"/1/cards/{cardId}", parameters);
                 var content = await remoteResponse.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<Cards>(content);
+                var response = JsonConvert.DeserializeObject<Card>(content);
 
                 if (response != null)
                 {

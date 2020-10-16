@@ -16,7 +16,6 @@ namespace TrelloApp.Views
         public BoardNewMember()
         {
             InitializeComponent();
-
             BindingContext = ViewModelLocator.Instance.Resolve<TrelloViewModel>();
         }
 

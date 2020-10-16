@@ -28,9 +28,9 @@ namespace TrelloApp.Views
 
         private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var card = ((ListView)sender).SelectedItem as Card;
-            if (card == null) return;
-            ViewModelLocator.Instance.Resolve<TrelloViewModel>().SelectedCard = card;
+            var cards = ((ListView)sender).SelectedItem as Card;
+            if (cards == null) return;
+            ViewModelLocator.Instance.Resolve<TrelloViewModel>().SelectedCard = cards;
             ListViewCardList.SelectedItem = null;
             Navigation.PushAsync(new ViewCard());
         }

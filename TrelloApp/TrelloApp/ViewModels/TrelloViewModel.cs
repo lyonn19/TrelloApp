@@ -21,11 +21,11 @@ namespace TrelloApp.ViewModels
             _trelloService = trelloService;
             
             BoardList = new ObservableCollection<Board>();
-            CardsList = new ObservableCollection<Cards>();
+            CardsList = new ObservableCollection<Card>();
 
             SelectedBoardList = new Board();
-            SelectedCardsList = new Cards();
             SelectedCard = new Card();
+            DetailCard = new Card();
         }
 
         // Properties
@@ -40,16 +40,16 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        private Cards _selectedCardsList;
-        public Cards SelectedCardsList
-        {
-            get { return _selectedCardsList; }
-            set
-            {
-                _selectedCardsList = value;
-                OnPropertyChanged();
-            }
-        }
+        //private Cards _selectedCardsList;
+        //public Cards SelectedCardsList
+        //{
+        //    get { return _selectedCardsList; }
+        //    set
+        //    {
+        //        _selectedCardsList = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         private Card _selectedCard;
         public Card SelectedCard
@@ -58,6 +58,17 @@ namespace TrelloApp.ViewModels
             set
             {
                 _selectedCard = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Card _detailCard;
+        public Card DetailCard
+        {
+            get { return _detailCard; }
+            set
+            {
+                _detailCard = value;
                 OnPropertyChanged();
             }
         }
@@ -97,7 +108,7 @@ namespace TrelloApp.ViewModels
 
 
         public ObservableCollection<Board> BoardList { get; set; }
-        public ObservableCollection<Cards> CardsList { get; set; }
+        public ObservableCollection<Card> CardsList { get; set; }
 
         // Functions
         // Board 
@@ -160,7 +171,7 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                await _trelloService.GetCard(SelectedCard.Id);
+                DetailCard =  await _trelloService.GetCard(SelectedCard.Id);
             }
             catch (Exception)
             {

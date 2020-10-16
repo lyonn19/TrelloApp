@@ -12,7 +12,7 @@
                 BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}" Detail="{Binding desc}"/>
+                        <TextCell Text="{Binding Name}" Detail="{Binding Desc}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

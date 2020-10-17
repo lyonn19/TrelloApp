@@ -134,7 +134,7 @@ namespace TrelloApp.Behaviors
 
             if (!IsValid)
             {
-                entry.TextColor = Color.White;
+                entry.TextColor = Color.Blue;
                 return;
             }
 
@@ -146,7 +146,7 @@ namespace TrelloApp.Behaviors
         {
             IsValid = true;
             Message = string.Empty;
-            entry.TextColor = Color.White;
+            entry.TextColor = Color.Black;
         }
 
         public void Validate()

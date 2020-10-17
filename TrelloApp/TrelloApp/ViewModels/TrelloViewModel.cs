@@ -194,7 +194,7 @@ namespace TrelloApp.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");
                 }
-                CardsListCommand.Execute(null);
+                
                 await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
@@ -337,6 +337,7 @@ namespace TrelloApp.ViewModels
             finally
             {
                 IsBusy = false;
+                CardsListCommand.Execute(null);
             }
         }
 

@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:TrelloApp.Converters"
              x:Class="TrelloApp.Views.ViewCardFromList"
              Title="Cards List">
+    <ContentPage.Resources>
+        <converters:LabelMaxLengthConverter x:Key="LabelMaxLengthConverter" />
+    </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="Save" Text="New Card" Icon="" Priority="0" Order="Primary" Clicked="NewCard_Clicked"/>
     </ContentPage.ToolbarItems>
@@ -19,7 +22,7 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Vertical">
                                 <Label Text="{Binding Name}" TextColor="Blue"/>
-                                <Label Text="{Binding Desc}" TextColor="Black" HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding Desc, Converter={StaticResource LabelMaxLengthConverter}}" TextColor="Black" LineBreakMode="TailTruncation"  HorizontalOptions="StartAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

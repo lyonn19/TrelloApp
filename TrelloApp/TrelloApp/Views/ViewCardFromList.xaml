@@ -4,7 +4,7 @@
              x:Class="TrelloApp.Views.ViewCardFromList"
              Title="Cards List">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Save" Text="New Card" Icon="ic_stat_add.png" Priority="0" Order="Primary" Clicked="NewCard_Clicked"/>
+        <ToolbarItem x:Name="Save" Text="New Card" Icon="" Priority="0" Order="Primary" Clicked="NewCard_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -12,10 +12,16 @@
                 ItemsSource="{Binding CardsList}"
                 ItemSelected="ListView_OnItemSelected"
                 SeparatorVisibility="Default"
+                RowHeight="70"
                 BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Desc}"/>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <Label Text="{Binding Name}" TextColor="Blue"/>
+                                <Label Text="{Binding Desc}" TextColor="Black" HorizontalOptions="StartAndExpand"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Footer>

@@ -15,7 +15,12 @@
                 BackgroundColor="Transparent">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" Detail="{Binding Pos}"/>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label Text="{Binding Name}" TextColor="Black" FontSize="16"/>
+                                <!--<Label Text="{Binding Pos}" TextColor="Black" HorizontalOptions="End"/>-->
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

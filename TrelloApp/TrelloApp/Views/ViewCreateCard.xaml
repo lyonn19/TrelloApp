@@ -1,15 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behavior1="clr-namespace:TrelloApp.Behaviors"
              x:Class="TrelloApp.Views.ViewCreateCard"
              Title="New Card">
     <ContentPage.Content>
         <StackLayout Padding="20">
 
-            <Label Text="Name"/>
-            <Entry Text="{Binding CardName}"/>
-            <Label Text="Descripcion"/>
-            <Entry Text="{Binding CardDescription}"/>
+            <Label Text="Name" TextColor="Black"/>
+            <Entry Text="{Binding CardName}">
+                <Entry.Behaviors>
+                    <behavior1:EntryValidatorBehavior
+                        IsCheckEmpty="True"
+                        IsCheckAlphaNumeric="True"
+                        x:Name="NameValidator">
+                    </behavior1:EntryValidatorBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+            <Label Text="{Binding Source={x:Reference NameValidator}, Path=Message}" 
+                IsVisible="{Binding Source={x:Reference NameValidator}, Path=IsVisibleMessage}"
+                TextColor="Red"
+                FontSize="12"/>
+
+            <Label Text="Descripcion" TextColor="Black"/>
+            <Entry Text="{Binding CardDescription}">
+                <Entry.Behaviors>
+                    <behavior1:EntryValidatorBehavior
+                        IsCheckEmpty="True"
+                        IsCheckAlphaNumeric="True"
+                        x:Name="DescriptionValidation">
+                    </behavior1:EntryValidatorBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+            <Label Text="{Binding Source={x:Reference DescriptionValidation}, Path=Message}" 
+                IsVisible="{Binding Source={x:Reference DescriptionValidation}, Path=IsVisibleMessage}"
+                TextColor="Red"
+                FontSize="12"/>
 
             <Button Text="Create" Clicked="Button_Clicked"/>
         </StackLayout>

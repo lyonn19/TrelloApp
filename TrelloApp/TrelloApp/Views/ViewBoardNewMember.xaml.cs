@@ -21,7 +21,20 @@ namespace TrelloApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            if (!ValidateFields()) return;
             ViewModelLocator.Instance.Resolve<TrelloViewModel>().NewBoardMemberCommand.Execute(null);
+        }
+
+        private bool ValidateFields()
+        {
+            bool result = true;
+            EmailValidator.Validate();
+            if (!EmailValidator.IsValid)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }

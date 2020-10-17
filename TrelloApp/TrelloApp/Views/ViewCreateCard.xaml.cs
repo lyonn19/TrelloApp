@@ -21,7 +21,27 @@ namespace TrelloApp.Views
 
         private void Button_Clicked(object sender, EventArgs e)
         {
+            if (!ValidateFields()) return;
             ViewModelLocator.Instance.Resolve<TrelloViewModel>().CreateCardCommand.Execute(null);
         }
+
+        private bool ValidateFields()
+        {
+            bool result = true;
+            NameValidator.Validate();
+            if (!NameValidator.IsValid)
+            {
+                result = false;
+            }
+
+            DescriptionValidation.Validate();
+            if (!DescriptionValidation.IsValid)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
     }
 }

@@ -1,12 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behavior1="clr-namespace:TrelloApp.Behaviors"
              x:Class="TrelloApp.Views.ViewBoardNewMember"
              Title="Invite New Member">
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Label Text="New Member Email" TextColor="Black"/>
-            <Entry Text="{Binding NewMemeberEmail}"/>
+            <Entry Text="{Binding NewMemeberEmail}">
+                <Entry.Behaviors>
+                    <behavior1:EntryValidatorBehavior
+                        IsCheckEmpty="True"
+                        IsCheckEmail="True"
+                        x:Name="EmailValidator">
+                    </behavior1:EntryValidatorBehavior>
+                </Entry.Behaviors>
+            </Entry>
+
+            <Label Text="{Binding Source={x:Reference EmailValidator}, Path=Message}" 
+                IsVisible="{Binding Source={x:Reference EmailValidator}, Path=IsVisibleMessage}"
+                TextColor="Red"
+                FontSize="12"/>
             <Button Text="Invite New Member" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

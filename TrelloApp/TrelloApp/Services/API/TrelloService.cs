@@ -28,8 +28,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" }
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token }
                 };
 
                 var remoteResponse = await GetAsync($"/1/boards/{boardId}/lists", parameters);
@@ -55,8 +55,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" }
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token }
                 };
 
                 var remoteResponse = await GetAsync($"/1/lists/{cardListId}/cards", parameters);
@@ -82,8 +82,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" }
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token }
                 };
 
                 var remoteResponse = await GetAsync($"/1/cards/{cardId}", parameters);
@@ -109,8 +109,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" }
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token }
                 };
 
                 var remoteResponse = await GetAsync($"/1/cards/{cardId}/attachments", parameters);
@@ -138,8 +138,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" },
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token },
                     { "email", email },
                 };
 
@@ -166,8 +166,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" },
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token },
                     { "name", card.Name },
                     { "desc", card.Desc },
                     { "idList", cardIdList },
@@ -196,8 +196,8 @@ namespace TrelloApp.Services.API
             {
                 var parameters = new Dictionary<string, string>
                 {
-                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
-                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" },
+                    { "key", AppSettings.key },
+                    { "token", AppSettings.token }
                 };
 
                 var uri = new Uri(BuidlQueryString($"{ENDPOINT_BASE}/1/cards/{cardId}/attachments", parameters));

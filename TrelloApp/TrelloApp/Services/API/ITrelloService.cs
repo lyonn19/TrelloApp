@@ -13,6 +13,6 @@ namespace TrelloApp.Services.API
         Task<Card> GetCard(string cardId);
         Task<bool> PostNewBoardMember(string boardId, string email);
         Task<bool> CreateCard(string cardListId, Card card);
-        Task<bool> AddAttachmentToCard(string cardId);
+        Task<bool> AddAttachmentToCard(string cardId, byte[] imagen);
     }
 }

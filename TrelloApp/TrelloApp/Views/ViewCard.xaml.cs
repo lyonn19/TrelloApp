@@ -24,5 +24,12 @@ namespace TrelloApp.Views
             base.OnAppearing();
             ViewModelLocator.Instance.Resolve<TrelloViewModel>().CardCommand.Execute(null);
         }
+
+        private void NewAttachment_Clicked(object sender, EventArgs e)
+        {
+
+            Navigation.PushAsync(new ViewAddAttachment());
+            
+        }
     }
 }

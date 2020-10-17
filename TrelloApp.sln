@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloApp.Android", "Trello
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloApp.iOS", "TrelloApp\TrelloApp.iOS\TrelloApp.iOS.csproj", "{DE8C887E-800A-455F-BBB7-C8BB55D3857A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrelloApp", "TrelloApp\TrelloApp\TrelloApp.csproj", "{4523165E-67B5-4EFE-A888-24A55107EAF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrelloApp", "TrelloApp\TrelloApp\TrelloApp.csproj", "{4523165E-67B5-4EFE-A888-24A55107EAF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

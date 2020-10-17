@@ -95,17 +95,16 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        private int _cardListCount;
-        public int CardListCount 
+        private byte[] _imagenBase64;
+        public byte[] ImagenToUpload
         {
-            get { return _cardListCount; }
-            set
+            get { return _imagenBase64; }
+            set 
             {
-                _cardListCount = value;
+                _imagenBase64 = value;
                 OnPropertyChanged();
             }
         }
-
 
         public ObservableCollection<Board> BoardList { get; set; }
         public ObservableCollection<Card> CardsList { get; set; }
@@ -145,7 +144,6 @@ namespace TrelloApp.ViewModels
                     {
                         CardsList.Add(item);
                     }
-                    CardListCount = CardsList.Count;
                 }
             }
             catch (Exception ex)
@@ -164,6 +162,8 @@ namespace TrelloApp.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");
                 }
+
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {
@@ -194,6 +194,8 @@ namespace TrelloApp.ViewModels
                 {
                     await Application.Current.MainPage.DisplayAlert("Error", "an error occurred creating the card", "Accept");
                 }
+
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {
@@ -206,11 +208,17 @@ namespace TrelloApp.ViewModels
         {
             try
             {
-                await _trelloService.AddAttachmentToCard(SelectedCard.Id);
+                var result = await _trelloService.AddAttachmentToCard(SelectedCard.Id, ImagenToUpload);
+                if (!result)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "an error occurred attaching file", "Accept");
+                }
+
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrio un error interno en el servidor", "Aceptar");
+                await Application.Current.MainPage.DisplayAlert("Error", "An internal server error occurred", "Accept");
             }
         }
 

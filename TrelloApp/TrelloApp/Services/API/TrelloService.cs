@@ -1,8 +1,13 @@
 ﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using TrelloApp.Models;
@@ -155,7 +160,7 @@ namespace TrelloApp.Services.API
             return result;
         }
 
-        public async Task<bool> AddAttachmentToCard(string cardId)
+        public async Task<bool> AddAttachmentToCard(string cardId, byte[] file)
         {
             bool result = false;
             try
@@ -166,9 +171,15 @@ namespace TrelloApp.Services.API
                     { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" },
                 };
 
-                var remoteResponse = await PostAsync($"/1/cards/{cardId}/attachments", JsonConvert.SerializeObject(parameters));
-                var content = await remoteResponse.Content.ReadAsStringAsync();
-                var response = JsonConvert.DeserializeObject<object>(content);
+                var uri = new Uri(BuidlQueryString($"{ENDPOINT_BASE}/1/cards/{cardId}/attachments", parameters));
+
+                var client = new RestClient(uri)
+                {
+                    Timeout = -1
+                };
+                var request = new RestRequest(Method.POST);
+                request.AddFile("file", file ,"fileAttached");
+                IRestResponse response = await client.ExecuteAsync(request);
 
                 if (response != null)
                 {
@@ -180,6 +191,18 @@ namespace TrelloApp.Services.API
                 Debug.WriteLine($@"ERROR {ex.Message}");
             }
             return result;
+        }
+
+        private string BuidlQueryString(string endPoint, Dictionary<string, string> parameters)
+        {
+            if (parameters != null && parameters.Count > 0)
+            {
+                return string.Format("{0}?{1}", endPoint, string.Join("&", parameters.Select(kvp => string.Format("{0}={1}", kvp.Key, kvp.Value))));
+            }
+            else
+            {
+                return endPoint;
+            }
         }
 
     }

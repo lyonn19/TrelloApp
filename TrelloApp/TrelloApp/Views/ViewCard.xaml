@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TrelloApp.Views.ViewCard"
              Title="Card Detail">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Save" Text="New Attachment" Icon="Add.png" Priority="0" Order="Primary" Clicked="NewAttachment_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Label Text="Title" TextColor="Black"/>

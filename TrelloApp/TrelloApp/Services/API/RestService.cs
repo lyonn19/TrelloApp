@@ -74,6 +74,21 @@ namespace TrelloApp.Services.API
             }
         }
 
+        public async Task<HttpResponseMessage> PostBinaryAsync(string method, Dictionary<string, string> parameters, string json)
+        {
+            var uri = new Uri(BuidlQueryString((_endPoint + method), parameters));
+            if (string.IsNullOrEmpty(json))
+            {
+
+                return await _httpClient.PostAsync(uri, null);
+            }
+            else
+            {
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                return await _httpClient.PostAsync(uri, content);
+            }
+        }
+
         public async Task<HttpResponseMessage> GetAsync(string method, Dictionary<string, string> parameters)
         {
             var uri = new Uri(BuidlQueryString((_endPoint + method), parameters));

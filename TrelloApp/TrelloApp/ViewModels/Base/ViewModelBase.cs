@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace TrelloApp.ViewModels.Base
@@ -19,5 +20,6 @@ namespace TrelloApp.ViewModels.Base
         {
             return Task.FromResult(false);
         }
+
     }
 }

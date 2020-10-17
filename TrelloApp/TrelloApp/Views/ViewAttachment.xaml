@@ -1,12 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TrelloApp.Views.AddAttachment">
+             x:Class="TrelloApp.Views.ViewAddAttachment"
+             Title="Attach an Imagen">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Save" Text="Save" Priority="0" Order="Primary" Clicked="UploadImagen_Clicked"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Padding="20">
+                <Button Text="Take Photo" Clicked="BtnTakePhoto_Clicked"/>
+                <Button Text="Pick Imagen" Clicked="BtnPickImagen_Clicked"/>
+
+                <Image x:Name="resultImage" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

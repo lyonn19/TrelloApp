@@ -11,6 +11,7 @@
                 <Entry.Behaviors>
                     <behavior1:EntryValidatorBehavior
                         IsCheckEmpty="True"
+                        MinLength="5"
                         x:Name="NameValidator">
                     </behavior1:EntryValidatorBehavior>
                 </Entry.Behaviors>

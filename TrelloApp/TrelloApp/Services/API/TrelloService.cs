@@ -102,6 +102,35 @@ namespace TrelloApp.Services.API
             return result;
         }
 
+        public async Task<IEnumerable<Attachment>> GetAttachmentsOnCard(string cardId)
+        {
+            IEnumerable<Attachment> result = new List<Attachment>();
+            try
+            {
+                var parameters = new Dictionary<string, string>
+                {
+                    { "key", "a9f2cc2bbe00cfc3e93460eb0de6e361" },
+                    { "token", "97af0bfb10fec01fd940a129dbcf32b3a46570a15d07206c068cb201ff4abfd7" }
+                };
+
+                var remoteResponse = await GetAsync($"/1/cards/{cardId}/attachments", parameters);
+                var content = await remoteResponse.Content.ReadAsStringAsync();
+                var response = JsonConvert.DeserializeObject<IEnumerable<Attachment>>(content);
+
+                if (response != null)
+                {
+                    result = response;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($@"ERROR {ex.Message}");
+            }
+            return result;
+        }
+
+
+
         public async Task<bool> PostNewBoardMember(string boardId, string email)
         {
             bool result = false;

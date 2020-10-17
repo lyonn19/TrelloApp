@@ -4,7 +4,7 @@
              x:Class="TrelloApp.Views.ViewAddAttachment"
              Title="Attach an Imagen">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Save" Text="Save" Priority="0" Order="Primary" Clicked="UploadImagen_Clicked"/>
+        <ToolbarItem x:Name="Save" Text="Upload Imagen" Priority="0" Order="Primary" Clicked="UploadImagen_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>

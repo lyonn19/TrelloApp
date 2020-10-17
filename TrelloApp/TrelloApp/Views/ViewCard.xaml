@@ -13,7 +13,7 @@
             <Label Text="Full Description" TextColor="Black"/>
             <Label Text="{Binding DetailCard.Desc}"/>
             <Label Text="Card Attachments" TextColor="Black"/>
-            <Label Text="{Binding DetailCard.Badges.Attachments}"/>
+            <Label Text="{Binding AttachmentCount}"/>
 
         </StackLayout>
     </ContentPage.Content>

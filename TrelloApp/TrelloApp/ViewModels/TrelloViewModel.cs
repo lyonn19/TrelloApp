@@ -28,7 +28,6 @@ namespace TrelloApp.ViewModels
             DetailCard = new Card();
         }
 
-        // Properties
         private Board _selectedBoardList;
         public Board SelectedBoardList
         {
@@ -95,13 +94,24 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        private byte[] _imagenBase64;
+        private byte[] _imagenToUpload;
         public byte[] ImagenToUpload
         {
-            get { return _imagenBase64; }
+            get { return _imagenToUpload; }
             set 
             {
-                _imagenBase64 = value;
+                _imagenToUpload = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _attachmentsCount;
+        public int AttachmentCount
+        {
+            get { return _attachmentsCount; }
+            set
+            {
+                _attachmentsCount = value;
                 OnPropertyChanged();
             }
         }
@@ -109,8 +119,6 @@ namespace TrelloApp.ViewModels
         public ObservableCollection<Board> BoardList { get; set; }
         public ObservableCollection<Card> CardsList { get; set; }
 
-        // Functions
-        // Board 
         private async Task GetBoardListAsync()
         {
             try
@@ -131,7 +139,6 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        // Card list
         private async Task GetCardsListAsync()
         {
             try
@@ -152,7 +159,21 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        // New member to board
+        private async Task GetAttachmentOnCard()
+        {
+            try
+            {
+                var result = await _trelloService.GetAttachmentsOnCard(SelectedCard.Id);
+
+                AttachmentCount = result.Count();
+
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Ocurrio un error interno en el servidor", "Aceptar");
+            }
+        }
+
         private async Task PostNewBoardMemberAsync()
         {
             try
@@ -171,12 +192,13 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        // View Card
         private async Task GetCardAsync()
         {
             try
             {
                 DetailCard =  await _trelloService.GetCard(SelectedCard.Id);
+                
+                await GetAttachmentOnCard();
             }
             catch (Exception)
             {
@@ -184,7 +206,6 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        // Create Card
         private async Task CreateNewCardAsync()
         {
             try
@@ -203,7 +224,6 @@ namespace TrelloApp.ViewModels
             }
         }
 
-        // Add Attachment to Card
         private async Task CreateAttachmentToCardAsync()
         {
             try
@@ -222,8 +242,6 @@ namespace TrelloApp.ViewModels
             }
         }
 
-
-        // Commands
         Command _boardListCommand;
         public Command BoardListCommand
         {
@@ -361,7 +379,9 @@ namespace TrelloApp.ViewModels
             finally
             {
                 IsBusy = false;
+                CardCommand.Execute(null);
             }
         }
+        
     }
 }

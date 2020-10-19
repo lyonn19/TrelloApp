@@ -12,7 +12,7 @@
                 <Button Text="Take Photo" Clicked="BtnTakePhoto_Clicked"/>
                 <Button Text="Pick Imagen" Clicked="BtnPickImagen_Clicked"/>
 
-                <Image x:Name="resultImage" />
+                <Image x:Name="resultImage" Aspect="AspectFill" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

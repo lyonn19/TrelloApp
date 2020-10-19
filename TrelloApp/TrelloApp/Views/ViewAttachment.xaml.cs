@@ -22,35 +22,50 @@ namespace TrelloApp.Views
 
         private async void BtnTakePhoto_Clicked(object sender, System.EventArgs e)
         {
-            var result = await MediaPicker.CapturePhotoAsync();
 
-            if (result != null)
+            try
             {
-                var stream = await result.OpenReadAsync();
+                var result = await MediaPicker.CapturePhotoAsync();
 
-                resultImage.Source = ImageSource.FromStream(() => stream);
+                if (result != null)
+                {
+                    var stream = await result.OpenReadAsync();
+
+                    ViewModelLocator.Instance.Resolve<TrelloViewModel>().ImagenToUpload = StreamHelpers.ReadFully(stream);
+                    resultImage.Source = ImageSource.FromStream(() => new MemoryStream(ViewModelLocator.Instance.Resolve<TrelloViewModel>().ImagenToUpload));
+                }
             }
+            catch (FeatureNotSupportedException ex)
+            {
+                await DisplayAlert("Warning", "Feature not supported", "Accept");
+            }
+            
         }
 
         private async void BtnPickImagen_Clicked(object sender, System.EventArgs e)
         {
-            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+
+            try
             {
-                Title = "Please pick a photo"
-            });
+                var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+                {
+                    Title = "Please pick a photo"
+                });
 
+                if (result != null)
+                {
+                    var stream = await result.OpenReadAsync();
+                                       
+                    ViewModelLocator.Instance.Resolve<TrelloViewModel>().ImagenToUpload = StreamHelpers.ReadFully(stream);
+                    resultImage.Source = ImageSource.FromStream(() => new MemoryStream(ViewModelLocator.Instance.Resolve<TrelloViewModel>().ImagenToUpload));
+                }
 
-            var stream2 = await result.OpenReadAsync();
-
-            if (result != null)
-            {
-                var stream = await result.OpenReadAsync();
-
-                resultImage.Source = ImageSource.FromStream(() => stream);
             }
-
-            ViewModelLocator.Instance.Resolve<TrelloViewModel>().ImagenToUpload = StreamHelpers.ReadFully(stream2);
-
+            catch (FeatureNotSupportedException)
+            {
+                await DisplayAlert("Warning", "Feature not supported", "Accept");
+            }
+                        
         }
 
         private void UploadImagen_Clicked(object sender, EventArgs e)

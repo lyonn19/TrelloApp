@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -92,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TrelloApp\TrelloApp.csproj">
-      <Project>{A9993B01-F5D8-472B-968C-2D63E21F4197}</Project>
+      <Project>{4523165E-67B5-4EFE-A888-24A55107EAF1}</Project>
       <Name>TrelloApp</Name>
     </ProjectReference>
   </ItemGroup>

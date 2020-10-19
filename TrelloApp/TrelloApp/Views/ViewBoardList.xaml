@@ -4,7 +4,7 @@
              x:Class="TrelloApp.Views.ViewBoardList"
              Title="Trello M-ProyectX Board">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Save" Text="New Member" Icon="ic_stat_add.png" Priority="0" Order="Primary" Clicked="NewMember_Clicked"/>
+        <ToolbarItem x:Name="Save" Text="New Member" Icon="" Priority="0" Order="Primary" Clicked="NewMember_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
@@ -17,8 +17,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
-                                <Label Text="{Binding Name}" TextColor="Black" FontSize="16"/>
-                                <!--<Label Text="{Binding Pos}" TextColor="Black" HorizontalOptions="End"/>-->
+                                <Label Text="{Binding Name}" TextColor="OrangeRed" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding CardsCount}" TextColor="Black" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

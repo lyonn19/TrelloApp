@@ -4,15 +4,15 @@
              x:Class="TrelloApp.Views.ViewCard"
              Title="Card Detail">
     <ContentPage.ToolbarItems>
-        <ToolbarItem x:Name="Save" Text="New Attachment" Icon="Add.png" Priority="0" Order="Primary" Clicked="NewAttachment_Clicked"/>
+        <ToolbarItem x:Name="Save" Text="New Attachment" Icon="" Priority="0" Order="Primary" Clicked="NewAttachment_Clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <Label Text="Title" TextColor="Black"/>
+            <Label Text="Title" TextColor="Black" FontAttributes="Bold"/>
             <Label Text="{Binding DetailCard.Name}"/>
-            <Label Text="Full Description" TextColor="Black"/>
-            <Label Text="{Binding DetailCard.Desc}"/>
-            <Label Text="Card Attachments" TextColor="Black"/>
+            <Label Text="Full Description" TextColor="Black" FontAttributes="Bold"/>
+            <Label Text="{Binding DetailCard.Desc}" />
+            <Label Text="Card Attachments" TextColor="Black" FontAttributes="Bold"/>
             <Label Text="{Binding AttachmentCount}"/>
 
         </StackLayout>

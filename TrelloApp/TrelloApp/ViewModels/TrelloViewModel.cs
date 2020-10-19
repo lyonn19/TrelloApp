@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TrelloApp.Models;
 using TrelloApp.Services.API;
+using TrelloApp.Utils;
 using TrelloApp.ViewModels.Base;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TrelloApp.ViewModels
@@ -129,7 +131,20 @@ namespace TrelloApp.ViewModels
                 {
                     foreach (var item in boards)
                     {
-                        BoardList.Add(item);
+
+                        var result = await _trelloService.GetCardsFromList(item.Id);
+                       
+                        BoardList.Add(new Board()
+                        {
+                            Id = item.Id,
+                            Closed = item.Closed,
+                            IdBoard = item.IdBoard,
+                            Name = item.Name,
+                            Pos = item.Pos,
+                            SoftLimit = item.SoftLimit,
+                            Subscribed = item.Subscribed,
+                            CardsCount = result.Count()
+                        });
                     }
                 }
             }
@@ -382,6 +397,6 @@ namespace TrelloApp.ViewModels
                 CardCommand.Execute(null);
             }
         }
-        
+                       
     }
 }

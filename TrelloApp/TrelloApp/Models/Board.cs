@@ -24,5 +24,7 @@ namespace TrelloApp.Models
         
         [JsonProperty(PropertyName = "subscribed")]
         public bool Subscribed { get; set; }
+
+        public int CardsCount { get; set; }
     }
 }

@@ -272,7 +272,8 @@ namespace TrelloApp.ViewModels
             try
             {
                 IsBusy = true;
-                if(BoardList.Count == 0) await GetBoardListAsync();
+                BoardList.Clear();
+                await GetBoardListAsync();
             }
             finally
             {
